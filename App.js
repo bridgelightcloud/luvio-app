@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AsyncStorage } from 'react-native';
+import { Provider } from 'react-redux';
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
@@ -10,6 +11,7 @@ import HomeStack from './stacks/HomeStack';
 import SettingsStack from './stacks/SettingsStack';
 import AppFooter from './components/AppFooter';
 import EventStack from './stacks/EventStack';
+import store from './store/store';
 
 const AppTab = createBottomTabNavigator();
 
@@ -62,35 +64,37 @@ export default function App() {
   }
 
   return (
-    <Root>
-      <NavigationContainer>
-        <AppTab.Navigator tabBar={(props)=><AppFooter {...props} />}>
-          <AppTab.Screen
-            name="HomeStack"
-            component={HomeStack}
-            options={{
-              title:'Home',
-              icon:'home',
-            }}
-          />
-          <AppTab.Screen
-            name="EventStack"
-            component={EventStack}
-            options={{
-              title:'Events',
-              icon: 'ticket-alt'
-            }}
-          />
-          <AppTab.Screen
-            name="SettingsStack"
-            component={SettingsStack}
-            options={{
-              title:'Settings',
-              icon:'cog'
-            }}
-          />
-        </AppTab.Navigator>
-      </NavigationContainer>
-    </Root>
+    <Provider store={store}>
+      <Root>
+        <NavigationContainer>
+          <AppTab.Navigator tabBar={(props)=><AppFooter {...props} />}>
+            <AppTab.Screen
+              name="HomeStack"
+              component={HomeStack}
+              options={{
+                title:'Home',
+                icon:'home',
+              }}
+            />
+            <AppTab.Screen
+              name="EventStack"
+              component={EventStack}
+              options={{
+                title:'Events',
+                icon: 'ticket-alt'
+              }}
+            />
+            <AppTab.Screen
+              name="SettingsStack"
+              component={SettingsStack}
+              options={{
+                title:'Settings',
+                icon:'cog'
+              }}
+            />
+          </AppTab.Navigator>
+        </NavigationContainer>
+      </Root>
+    </Provider>
   );
 }
