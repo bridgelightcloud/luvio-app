@@ -1,19 +1,58 @@
-import React from 'react';
-import { View, Card, Form, Item, Input, Icon, Label } from 'native-base';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { View, Form, Item, Input, Label, Button, Text } from 'native-base';
+import Util from '../utilities';
+import BlockButton from '../components/BlockButton';
+const { setUser } = Util;
 
-export default function LoginScreen(props){
+function LoginScreen({ navigation, user }){
+  const [emailAddress, setEmailAddress] = useState('');
+  const [password, setPassword] = useState('');
+
   return (
     <View padder>
       <Form>
-        <Item floatingLabel>
-          <Label>email address</Label>
-          <Input textContentType="emailAddress" />
+        <Item>
+          <Input
+            textContentType="emailAddress"
+            onChangeText={setEmailAddress}
+            value={emailAddress}
+            placeholder="email address"
+          />
         </Item>
-        <Item floatingLabel>
-          <Label>password</Label>
-          <Input textContentType="password" secureTextEntry/>
+        <Item>
+          <Input
+            textContentType="password"
+            secureTextEntry
+            onChangeText={setPassword}
+            value={password}
+            placeholder="password"
+          />
         </Item>
+        <BlockButton
+          onPress={()=>{
+            navigation.popToTop();
+          }}
+        >
+          <Text>Cancel</Text>
+        </BlockButton>
+        <BlockButton
+          onPress={()=>{
+            setUser('Seanny');
+            navigation.popToTop();
+          }}
+        >
+          <Text>Log In</Text>
+        </BlockButton>
       </Form>
     </View>
   )
 }
+
+function mapStateToProps(store){
+  return {
+    user: store.userState,
+  };
+}
+
+export default connect(mapStateToProps)(LoginScreen);

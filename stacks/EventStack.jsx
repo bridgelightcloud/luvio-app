@@ -8,7 +8,7 @@ const Stack = createStackNavigator();
 export default function EventStack({navigation, route}){
   return(
     <Container>
-      <AppHeader route={route}/>
+      {/* <AppHeader route={route}/> */}
       <Stack.Navigator headerMode="none">
         <Stack.Screen name="Overview" component={Text} />
       </Stack.Navigator>

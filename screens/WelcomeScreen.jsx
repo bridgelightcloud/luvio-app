@@ -6,24 +6,17 @@ import BlockButton from '../components/BlockButton';
 
 const { setUser } = Util;
 
-function LandingScreen({ navigation, user }){
+function WelcomeScreen({ navigation, user }){
   return(
     <Content padder>
       <View>
+        <Text>{`Welcome, ${user}`}</Text>
         <BlockButton
-          rounded
-          block
           onPress={()=>{
-            navigation.navigate('Login');
-          }}>
-          <Text>Log In...</Text>
-        </BlockButton>
-        <BlockButton
-          rounded
-          block
-          onPress={()=>navigation.navigate("Signup")}
+            setUser(null);
+          }}
         >
-          <Text>Sign Up...</Text>
+          <Text>Log Out...</Text>
         </BlockButton>
       </View>
     </Content>
@@ -36,4 +29,4 @@ function mapStateToProps(store){
   };
 }
 
-export default connect(mapStateToProps)(LandingScreen);
+export default connect(mapStateToProps)(WelcomeScreen);

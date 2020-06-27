@@ -11,13 +11,14 @@ import HomeStack from './stacks/HomeStack';
 import SettingsStack from './stacks/SettingsStack';
 import AppFooter from './components/AppFooter';
 import EventStack from './stacks/EventStack';
-import store from './store/store';
+import util from './utilities';
+
+const { store, setUser } = util;
 
 const AppTab = createBottomTabNavigator();
 
 export default function App() {
   const [appReady, setAppReady] = useState(false);
-  const [user, setUser] = useState(null);
 
   async function loadDataAndAssets(){
     return promise = Promise.all([

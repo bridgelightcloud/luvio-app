@@ -1,9 +1,20 @@
 import React from 'react';
-import { Text } from 'native-base';
+import { Text, Container } from 'native-base';
+import { createStackNavigator } from '@react-navigation/stack';
+import AppHeader from '../components/AppHeader';
+import OverviewScreen from '../screens/OverviewScreen';
+import NotificationsScreen from '../screens/NotificationsScreen';
 
-export default function SettingsStack(){
+const Stack = createStackNavigator();
+
+export default function SettingsStack(props){
   return(
-    
-    <Text>Settings Stack</Text>
+    <Container>
+      <AppHeader { ...props } />
+      <Stack.Navigator headerMode="none">
+        <Stack.Screen name="Overview" component={OverviewScreen} />
+        <Stack.Screen name="Notifications" component={NotificationsScreen} />
+      </Stack.Navigator>
+    </Container>
   )
 }
