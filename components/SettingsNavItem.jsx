@@ -1,11 +1,15 @@
 import React from 'react';
-import { ListItem, Left, Icon, Body, Text, Right } from 'native-base';
+import {
+  ListItem, Left, Icon, Body, Text, Right,
+} from 'native-base';
 
-export default function SettingsNavItem({ icon, title, destination, navigation }){
-  return(
+export default function SettingsNavItem({
+  icon, title, destination, navigation,
+}) {
+  return (
     <ListItem
       icon
-      onPress={()=>navigation.navigate(destination)}
+      onPress={() => navigation.navigate(destination)}
     >
       <Left>
         <Icon name={icon} type="FontAwesome5" />

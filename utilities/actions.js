@@ -1,28 +1,28 @@
 import store from './store';
 
-function setUserAction(user){
+function setUserAction(user) {
   return {
     type: 'SET_USER',
-    user
-  }
+    user,
+  };
 }
 
-function setUser(user){
+function setUser(user) {
   store.dispatch(setUserAction(user));
 }
 
-function setSettingAction(setting){
+function setSettingAction(setting) {
   return {
     type: setting.name,
-    value: setting.value
-  }
+    value: setting.value,
+  };
 }
 
-function setSetting(setting){
+function setSetting(setting) {
   store.dispatch(setSettingAction(setting));
 }
 
 export default {
   setUser,
   setSetting,
-}
+};

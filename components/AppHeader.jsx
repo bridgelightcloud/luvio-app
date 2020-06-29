@@ -1,9 +1,10 @@
 import React from 'react';
-import { Header, Left, Right, Body, Title, Icon } from 'native-base';
-import { useRoute } from '@react-navigation/native';
+import {
+  Header, Left, Right, Body, Title,
+} from 'native-base';
 
-export default function AppHeader({ route }){
-  return(
+export default function AppHeader({ route }) {
+  return (
     <Header>
       <Left />
       <Body>
@@ -11,5 +12,5 @@ export default function AppHeader({ route }){
       </Body>
       <Right />
     </Header>
-  )
+  );
 }

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Content, List, Text } from 'native-base';
+import { Content, List } from 'native-base';
 import SettingsToggleItem from '../components/SettingsToggleItem';
 
-export default function NotificationsScreen({ navigation }){
+export default function NotificationsScreen({ navigation }) {
   return (
     <Content padder>
       <List>
@@ -14,5 +14,5 @@ export default function NotificationsScreen({ navigation }){
         />
       </List>
     </Content>
-  )
+  );
 }

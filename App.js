@@ -20,7 +20,7 @@ const AppTab = createBottomTabNavigator();
 export default function App() {
   const [appReady, setAppReady] = useState(false);
 
-  async function loadDataAndAssets(){
+  async function loadDataAndAssets() {
     return promise = Promise.all([
       getUser(),
       loadFonts(),
@@ -28,69 +28,67 @@ export default function App() {
   }
 
   async function loadFonts() {
-    try{
+    try {
       await Font.loadAsync({
         Roboto: require('native-base/Fonts/Roboto.ttf'),
         Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
         ...Ionicons.font,
       });
-    }
-    catch(err){
+    } catch (err) {
       console.warn(err);
     }
   }
 
-  async function getUser(){
-    try{
+  async function getUser() {
+    try {
       const user = await AsyncStorage.getItem('@currentUser');
       setUser(user);
-    }
-    catch(err){
+    } catch (err) {
       console.warn(err);
     }
   }
 
-  function setReady(){
+  function setReady() {
     setAppReady(true);
   }
 
-  if(!appReady){
-    return(
-      <AppLoading 
+  if (!appReady) {
+    return (
+      <AppLoading
         startAsync={loadDataAndAssets}
         onFinish={setReady}
         onError={console.warn}
       />
-    )
+    );
   }
 
   return (
     <Provider store={store}>
       <Root>
         <NavigationContainer>
-          <AppTab.Navigator tabBar={(props)=><AppFooter {...props} />}>
+          <AppTab.Navigator tabBar={(props) => <AppFooter {...props} />}>
             <AppTab.Screen
               name="HomeStack"
               component={HomeStack}
               options={{
-                title:'Home',
-                icon:'home',
+                title: 'Home',
+                icon: 'home',
               }}
             />
             <AppTab.Screen
               name="EventStack"
               component={EventStack}
               options={{
-                title:'Events',
-                icon: 'ticket-alt'
+                title: 'Events',
+                icon: 'ticket-alt',
               }}
             />
             <AppTab.Screen
               name="SettingsStack"
               component={SettingsStack}
               options={{
-                title:'Settings',
-                icon:'cog'
+                title: 'Settings',
+                icon: 'cog',
               }}
             />
           </AppTab.Navigator>

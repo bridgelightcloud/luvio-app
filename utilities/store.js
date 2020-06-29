@@ -1,7 +1,7 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, combineReducers } from 'redux';
 
-function userReducer(state = null, action){
-  switch (action.type){
+function userReducer(state = null, action) {
+  switch (action.type) {
     case 'SET_USER':
       return action.user;
     default:
@@ -9,8 +9,8 @@ function userReducer(state = null, action){
   }
 }
 
-function settingsReducer(state = {}, action){
-  switch (action.type){
+function settingsReducer(state = {}, action) {
+  switch (action.type) {
     case 'DARK_MODE':
       return { ...state, darkMode: action.value };
     default:

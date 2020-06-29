@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Content, List, Text } from 'native-base';
 import SettingsNavItem from '../components/SettingsNavItem';
 import SettingsToggleItem from '../components/SettingsToggleItem';
 
-export default function OverviewScreen({ navigation }){
+export default function OverviewScreen({ navigation }) {
   return (
     <Content padder>
       <List>
-        <SettingsToggleItem 
+        <SettingsToggleItem
           icon="sun"
           title="Dark Mode"
           settingName="DARK_MODE"
@@ -22,5 +22,5 @@ export default function OverviewScreen({ navigation }){
       </List>
       <Text>Details</Text>
     </Content>
-  )
+  );
 }

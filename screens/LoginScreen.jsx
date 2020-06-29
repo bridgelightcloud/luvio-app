@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { View, Form, Item, Input, Label, Button, Text } from 'native-base';
+import {
+  View, Form, Item, Input, Text,
+} from 'native-base';
 import Util from '../utilities';
 import BlockButton from '../components/BlockButton';
+
 const { setUser } = Util;
 
-function LoginScreen({ navigation, user }){
+function LoginScreen({ navigation }) {
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
 
@@ -30,14 +33,14 @@ function LoginScreen({ navigation, user }){
           />
         </Item>
         <BlockButton
-          onPress={()=>{
+          onPress={() => {
             navigation.popToTop();
           }}
         >
           <Text>Cancel</Text>
         </BlockButton>
         <BlockButton
-          onPress={()=>{
+          onPress={() => {
             setUser('Seanny');
             navigation.popToTop();
           }}
@@ -46,10 +49,10 @@ function LoginScreen({ navigation, user }){
         </BlockButton>
       </Form>
     </View>
-  )
+  );
 }
 
-function mapStateToProps(store){
+function mapStateToProps(store) {
   return {
     user: store.userState,
   };

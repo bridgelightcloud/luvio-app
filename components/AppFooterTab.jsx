@@ -1,9 +1,10 @@
 import React from 'react';
 import { Button, Text, Icon } from 'native-base';
 
-export default function AppFooterTab({ route, navigation, title, icon, focused }){
-
-  function onPress(){
+export default function AppFooterTab({
+  route, navigation, title, icon, focused,
+}) {
+  function onPress() {
     const event = navigation.emit({
       type: 'tabPress',
       target: route.key,
@@ -15,11 +16,11 @@ export default function AppFooterTab({ route, navigation, title, icon, focused }
     }
   }
 
-  function onLongPress(){
+  function onLongPress() {
 
   }
 
-  return(
+  return (
     <Button
       active={focused}
       onPress={onPress}
@@ -28,5 +29,5 @@ export default function AppFooterTab({ route, navigation, title, icon, focused }
       <Icon name={icon} type="FontAwesome5" />
       <Text>{title}</Text>
     </Button>
-  )
+  );
 }

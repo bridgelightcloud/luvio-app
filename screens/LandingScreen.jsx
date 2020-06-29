@@ -1,27 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Content, Button, Text, View } from 'native-base';
-import Util from '../utilities';
+import {
+  Content, Text, View,
+} from 'native-base';
 import BlockButton from '../components/BlockButton';
 
-const { setUser } = Util;
-
-function LandingScreen({ navigation, user }){
-  return(
+function LandingScreen({ navigation }) {
+  return (
     <Content padder>
       <View>
         <BlockButton
           rounded
           block
-          onPress={()=>{
+          onPress={() => {
             navigation.navigate('Login');
-          }}>
+          }}
+        >
           <Text>Log In...</Text>
         </BlockButton>
         <BlockButton
           rounded
           block
-          onPress={()=>navigation.navigate("Signup")}
+          onPress={() => navigation.navigate('Signup')}
         >
           <Text>Sign Up...</Text>
         </BlockButton>
@@ -30,7 +30,7 @@ function LandingScreen({ navigation, user }){
   );
 }
 
-function mapStateToProps(store){
+function mapStateToProps(store) {
   return {
     user: store.userState,
   };

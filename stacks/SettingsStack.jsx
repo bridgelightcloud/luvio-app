@@ -7,14 +7,14 @@ import NotificationsScreen from '../screens/NotificationsScreen';
 
 const Stack = createStackNavigator();
 
-export default function SettingsStack(props){
-  return(
+export default function SettingsStack(props) {
+  return (
     <Container>
-      <AppHeader { ...props } />
+      <AppHeader {...props} />
       <Stack.Navigator headerMode="none">
         <Stack.Screen name="Overview" component={OverviewScreen} />
         <Stack.Screen name="Notifications" component={NotificationsScreen} />
       </Stack.Navigator>
     </Container>
-  )
+  );
 }

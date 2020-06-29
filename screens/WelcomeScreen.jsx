@@ -1,18 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Content, Button, Text, View } from 'native-base';
+import {
+  Content, Text, View,
+} from 'native-base';
 import Util from '../utilities';
 import BlockButton from '../components/BlockButton';
 
 const { setUser } = Util;
 
-function WelcomeScreen({ navigation, user }){
-  return(
+function WelcomeScreen({ user }) {
+  return (
     <Content padder>
       <View>
         <Text>{`Welcome, ${user}`}</Text>
         <BlockButton
-          onPress={()=>{
+          onPress={() => {
             setUser(null);
           }}
         >
@@ -23,7 +25,7 @@ function WelcomeScreen({ navigation, user }){
   );
 }
 
-function mapStateToProps(store){
+function mapStateToProps(store) {
   return {
     user: store.userState,
   };
