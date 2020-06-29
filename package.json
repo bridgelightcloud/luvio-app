@@ -13,6 +13,7 @@
     "@react-navigation/drawer": "^5.8.2",
     "@react-navigation/native": "^5.5.1",
     "@react-navigation/stack": "^5.5.1",
+    "axios": "^0.19.2",
     "expo": "~37.0.3",
     "expo-font": "~8.1.0",
     "native-base": "^2.13.12",
@@ -31,6 +32,12 @@
   "devDependencies": {
     "@babel/core": "^7.8.6",
     "babel-preset-expo": "~8.1.0",
+    "eslint": "^7.3.1",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.1",
+    "eslint-plugin-react-hooks": "^4.0.4",
     "redux-logger": "^3.0.6"
   },
   "private": true
