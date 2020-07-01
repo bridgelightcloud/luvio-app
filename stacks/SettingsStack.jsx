@@ -12,7 +12,7 @@ export default function SettingsStack(props) {
     <Container>
       <AppHeader {...props} />
       <Stack.Navigator headerMode="none">
-        <Stack.Screen name="Overview" component={OverviewScreen} />
+        <Stack.Screen name="overview" component={OverviewScreen} />
         <Stack.Screen name="Notifications" component={NotificationsScreen} />
       </Stack.Navigator>
     </Container>

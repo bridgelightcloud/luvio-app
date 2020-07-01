@@ -1,14 +1,14 @@
-import store from './store';
+import store from './Store';
 
-function setUserAction(user) {
+function setSessionAction(session) {
   return {
-    type: 'SET_USER',
-    user,
+    type: 'SET_SESSION',
+    session,
   };
 }
 
-function setUser(user) {
-  store.dispatch(setUserAction(user));
+function setSession(session) {
+  store.dispatch(setSessionAction(session));
 }
 
 function setSettingAction(setting) {
@@ -23,6 +23,6 @@ function setSetting(setting) {
 }
 
 export default {
-  setUser,
+  setSession,
   setSetting,
 };

@@ -1,38 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import {
-  Content, Text, View,
-} from 'native-base';
-import BlockButton from '../components/BlockButton';
+import { Content } from 'native-base';
+import SignInForm from '../components/SignInForm';
 
-function LandingScreen({ navigation }) {
+function LandingScreen(props) {
   return (
     <Content padder>
-      <View>
-        <BlockButton
-          rounded
-          block
-          onPress={() => {
-            navigation.navigate('Login');
-          }}
-        >
-          <Text>Log In...</Text>
-        </BlockButton>
-        <BlockButton
-          rounded
-          block
-          onPress={() => navigation.navigate('Signup')}
-        >
-          <Text>Sign Up...</Text>
-        </BlockButton>
-      </View>
+      <SignInForm />
     </Content>
   );
 }
 
 function mapStateToProps(store) {
   return {
-    user: store.userState,
+    session: store.sessionState,
   };
 }
 

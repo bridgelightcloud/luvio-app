@@ -1,6 +1,13 @@
-import store from './store';
-import actions from './actions';
+import Actions from './Actions';
+import Api from './Api';
+import Loader from './Loader';
+import Store from './Store';
 
-const Util = { store, ...actions };
+const util = {
+  Actions,
+  Api,
+  Loader,
+  Store,
+};
 
-export default Util;
+export default util;

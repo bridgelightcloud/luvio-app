@@ -1,5 +1,6 @@
 {
   "expo": {
+    "scheme": "tipper",
     "name": "tipping-app",
     "slug": "tipping-app",
     "platforms": [

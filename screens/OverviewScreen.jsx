@@ -3,7 +3,9 @@ import { Content, List, Text } from 'native-base';
 import SettingsNavItem from '../components/SettingsNavItem';
 import SettingsToggleItem from '../components/SettingsToggleItem';
 
-export default function OverviewScreen({ navigation }) {
+export default function OverviewScreen({ navigation, route }) {
+  console.log(route.params);
+
   return (
     <Content padder>
       <List>
@@ -20,7 +22,7 @@ export default function OverviewScreen({ navigation }) {
           navigation={navigation}
         />
       </List>
-      <Text>Details</Text>
+      <Text>{route.params ? route.params.word : 'nothing'}</Text>
     </Content>
   );
 }

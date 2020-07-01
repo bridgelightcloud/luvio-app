@@ -20,6 +20,10 @@
     ],
     "rules": {
         "no-console": "off",
-        "react/prop-types": [0]
+        "react/prop-types": [0],
+        "max-len": [2, {
+            "code": 120
+        }],
+        "global-require":"off"
     }
 }

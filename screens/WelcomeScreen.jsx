@@ -1,33 +1,27 @@
+/* eslint-disable no-fallthrough */
 import React from 'react';
-import { connect } from 'react-redux';
 import {
-  Content, Text, View,
+  Text, Content,
 } from 'native-base';
-import Util from '../utilities';
-import BlockButton from '../components/BlockButton';
+import { connect } from 'react-redux';
 
-const { setUser } = Util;
+function WelcomeScreen({ navigation, route, session }) {
+  // navigation.reset();
 
-function WelcomeScreen({ user }) {
+  console.log(session);
+
   return (
-    <Content padder>
-      <View>
-        <Text>{`Welcome, ${user}`}</Text>
-        <BlockButton
-          onPress={() => {
-            setUser(null);
-          }}
-        >
-          <Text>Log Out...</Text>
-        </BlockButton>
-      </View>
+    <Content>
+      <Content>
+        <Text>Welcome</Text>
+      </Content>
     </Content>
   );
 }
 
 function mapStateToProps(store) {
   return {
-    user: store.userState,
+    session: store.sessionState,
   };
 }
 
