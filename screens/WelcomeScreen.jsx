@@ -6,10 +6,6 @@ import {
 import { connect } from 'react-redux';
 
 function WelcomeScreen({ navigation, route, session }) {
-  // navigation.reset();
-
-  console.log(session);
-
   return (
     <Content>
       <Content>

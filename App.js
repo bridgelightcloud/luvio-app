@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
-import { UIManager } from 'react-native';
 import { Provider } from 'react-redux';
 import { AppLoading, Linking } from 'expo';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Root, Container, Header } from 'native-base';
+import { Root, Container } from 'native-base';
 import HomeStack from './stacks/HomeStack';
 import AppFooter from './components/AppFooter';
 import util from './utilities';
-
-UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
 
 const prefix = Linking.makeUrl('/');
 console.log('prefix:', prefix);

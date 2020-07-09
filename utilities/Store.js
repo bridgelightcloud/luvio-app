@@ -3,8 +3,6 @@ import { createStore, combineReducers } from 'redux';
 function sessionReducer(state = null, action) {
   switch (action.type) {
     case 'SET_SESSION':
-      console.log('setting session');
-      console.log(action.session);
       return action.session;
     default:
       return state;

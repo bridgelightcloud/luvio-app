@@ -28,7 +28,6 @@ function MagicLink({ navigation, route }) {
   }
 
   if (params && params.token) {
-    console.log(params.token);
     createSession();
   }
 

@@ -4,8 +4,6 @@ import SettingsNavItem from '../components/SettingsNavItem';
 import SettingsToggleItem from '../components/SettingsToggleItem';
 
 export default function OverviewScreen({ navigation, route }) {
-  console.log(route.params);
-
   return (
     <Content padder>
       <List>
