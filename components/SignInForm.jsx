@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Input, Text } from 'native-base';
+import {
+  TextInput, View, Button,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import BlockButton from './BlockButton';
 import models from '../models';
 
 function SignInForm() {
@@ -20,8 +21,9 @@ function SignInForm() {
   }
 
   return (
-    <Form>
-      <Input
+    <View>
+      <TextInput
+        rounded
         textContentType="emailAddress"
         autoCapitalize="none"
         autoCompleteType="email"
@@ -30,12 +32,11 @@ function SignInForm() {
         value={email}
         placeholder="email address"
       />
-      <BlockButton
+      <Button
         onPress={sendMagicLink}
-      >
-        <Text>Sign In or Sign Up</Text>
-      </BlockButton>
-    </Form>
+        title="Continue"
+      />
+    </View>
   );
 }
 

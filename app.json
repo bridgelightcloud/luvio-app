@@ -1,8 +1,8 @@
 {
   "expo": {
-    "scheme": "tipper",
-    "name": "tipping-app",
-    "slug": "tipping-app",
+    "scheme": "luvio",
+    "name": "luvio",
+    "slug": "luvio",
     "platforms": [
       "ios",
       "android",
@@ -14,7 +14,7 @@
     "splash": {
       "image": "./assets/images/luvio-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#0d1821"
     },
     "updates": {
       "fallbackToCacheTimeout": 0

@@ -1,17 +1,11 @@
 /* eslint-disable no-fallthrough */
 import React from 'react';
-import {
-  Text, Content,
-} from 'native-base';
 import { connect } from 'react-redux';
+import { Text } from 'react-native';
 
 function WelcomeScreen({ navigation, route, session }) {
   return (
-    <Content>
-      <Content>
-        <Text>Welcome</Text>
-      </Content>
-    </Content>
+    <Text>Welcome</Text>
   );
 }
 

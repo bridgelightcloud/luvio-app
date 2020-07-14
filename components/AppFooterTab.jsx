@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Text, Icon } from 'native-base';
+import { Button } from 'react-native';
 
 export default function AppFooterTab({
   route, navigation, title, icon, focused,
@@ -25,9 +25,7 @@ export default function AppFooterTab({
       active={focused}
       onPress={onPress}
       onLongPress={onLongPress}
-    >
-      <Icon name={icon} type="FontAwesome5" />
-      <Text>{title}</Text>
-    </Button>
+      title={title}
+    />
   );
 }

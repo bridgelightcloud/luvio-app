@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { AppLoading, Linking } from 'expo';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Root, Container } from 'native-base';
+import { StatusBar } from 'react-native';
 import HomeStack from './stacks/HomeStack';
 import AppFooter from './components/AppFooter';
 import util from './utilities';
@@ -41,20 +41,17 @@ export default function App() {
   return (
     <Provider store={util.Store}>
       <NavigationContainer linking={linking}>
-        <Root>
-          <Container>
-            <AppTab.Navigator tabBar={(props) => <AppFooter {...props} />}>
-              <AppTab.Screen
-                name="home"
-                component={HomeStack}
-                options={{
-                  title: 'Home',
-                  icon: 'home',
-                }}
-              />
-            </AppTab.Navigator>
-          </Container>
-        </Root>
+        <StatusBar backgroundColor="#0d1821" barStyle="light-content" />
+        <AppTab.Navigator tabBar={(props) => <AppFooter {...props} />}>
+          <AppTab.Screen
+            name="home"
+            component={HomeStack}
+            options={{
+              title: 'Home',
+              icon: 'home',
+            }}
+          />
+        </AppTab.Navigator>
       </NavigationContainer>
     </Provider>
   );

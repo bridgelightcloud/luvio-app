@@ -1,5 +1,5 @@
 import React from 'react';
-import { Footer, FooterTab } from 'native-base';
+import { View } from 'react-native';
 import AppFooterTab from './AppFooterTab';
 
 export default function AppFooter({ state, descriptors, navigation }) {
@@ -21,11 +21,9 @@ export default function AppFooter({ state, descriptors, navigation }) {
     });
 
     return (
-      <Footer>
-        <FooterTab>
-          {tabs}
-        </FooterTab>
-      </Footer>
+      <View>
+        {tabs}
+      </View>
     );
   }
 }

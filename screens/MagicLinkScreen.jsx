@@ -1,9 +1,7 @@
 /* eslint-disable no-fallthrough */
 import React from 'react';
-import {
-  Text, Content,
-} from 'native-base';
 import { connect } from 'react-redux';
+import { Text } from 'react-native';
 import models from '../models';
 import util from '../utilities';
 
@@ -32,11 +30,7 @@ function MagicLink({ navigation, route }) {
   }
 
   return (
-    <Content>
-      <Content>
-        <Text>Please click the link sent to your email address.</Text>
-      </Content>
-    </Content>
+    <Text>Please click the link sent to your email address.</Text>
   );
 }
 
