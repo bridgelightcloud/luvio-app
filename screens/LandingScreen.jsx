@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { Content } from 'native-base';
+import { View } from 'react-native';
 import SignInForm from '../components/SignInForm';
 
 function LandingScreen(props) {
   return (
-    <Content padder>
+    <View>
       <SignInForm />
-    </Content>
+    </View>
   );
 }
 
