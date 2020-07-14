@@ -1,5 +1,7 @@
 import React from 'react';
-import { Button } from 'react-native';
+import {
+  Tab, Button, Text, Center,
+} from '../styled/components';
 
 export default function AppFooterTab({
   route, navigation, title, icon, focused,
@@ -21,11 +23,16 @@ export default function AppFooterTab({
   }
 
   return (
-    <Button
+    <Tab
       active={focused}
       onPress={onPress}
       onLongPress={onLongPress}
-      title={title}
-    />
+    >
+      <Center>
+        <Text>
+          {title}
+        </Text>
+      </Center>
+    </Tab>
   );
 }

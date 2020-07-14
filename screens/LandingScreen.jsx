@@ -1,13 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { View } from 'react-native';
+import SvgLuvio from '../components/svg/SvgLuvio';
 import SignInForm from '../components/SignInForm';
+import {
+  ScreenBase, Text, Row, Center,
+} from '../styled/components';
 
-function LandingScreen(props) {
+function LandingScreen() {
   return (
-    <View>
-      <SignInForm />
-    </View>
+    <ScreenBase>
+      <Row>
+        <Center>
+          <SvgLuvio />
+        </Center>
+      </Row>
+      <Row>
+        <Center>
+          <SignInForm />
+        </Center>
+      </Row>
+      <Row />
+    </ScreenBase>
   );
 }
 

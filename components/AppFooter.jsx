@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import AppFooterTab from './AppFooterTab';
+import { Footer, Row } from '../styled/components';
 
 export default function AppFooter({ state, descriptors, navigation }) {
   if (state && descriptors && navigation) {
@@ -21,9 +22,11 @@ export default function AppFooter({ state, descriptors, navigation }) {
     });
 
     return (
-      <View>
-        {tabs}
-      </View>
+      <Footer>
+        <Row>
+          {tabs}
+        </Row>
+      </Footer>
     );
   }
 }

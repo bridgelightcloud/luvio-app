@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import {
-  TextInput, View, Button,
-} from 'react-native';
+import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import models from '../models';
+import {
+  TextInput, Button, Text, Center,
+} from '../styled/components';
 
 function SignInForm() {
   const [email, setEmail] = useState('');
@@ -21,7 +22,7 @@ function SignInForm() {
   }
 
   return (
-    <View>
+    <Center>
       <TextInput
         rounded
         textContentType="emailAddress"
@@ -32,11 +33,12 @@ function SignInForm() {
         value={email}
         placeholder="email address"
       />
-      <Button
-        onPress={sendMagicLink}
-        title="Continue"
-      />
-    </View>
+      <Button onPress={sendMagicLink}>
+        <Center>
+          <Text>make it rain</Text>
+        </Center>
+      </Button>
+    </Center>
   );
 }
 
