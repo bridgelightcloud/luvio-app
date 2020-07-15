@@ -14,7 +14,6 @@ const Token = {
         const check = util.Api.checkStatus(err.response, 'SEND_MAGIC_LINK');
         return check;
       }
-      console.log(err);
       return { success: false };
     }
   },

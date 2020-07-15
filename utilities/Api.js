@@ -46,9 +46,9 @@ const Api = {
 
   url(endpoint) {
     return [
-    // process.env.API_HOST ||  'https://tipper.seannyphoenix.com',
-      process.env.API_HOST_DEV || 'http://10.0.0.188:8080',
-      process.env.API_PATH || `/api/${this.version}/`,
+      process.env.API_HOST || 'https://api.getluv.io',
+      // process.env.API_HOST_DEV || 'http://10.0.0.188:8080',
+      process.env.API_PATH || `/${this.version}/`,
       endpoint,
     ].join('');
   },
@@ -60,7 +60,6 @@ const Api = {
       code: statusCodes[status][call],
       data,
     };
-    console.log(check);
     return check;
   },
 };

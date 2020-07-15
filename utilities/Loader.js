@@ -1,4 +1,6 @@
 import { AsyncStorage } from 'react-native';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faHomeLgAlt } from '@fortawesome/pro-duotone-svg-icons';
 import Actions from './Actions';
 
 async function getSession() {
@@ -11,6 +13,7 @@ async function getSession() {
 }
 
 async function loadFonts() {
+  library.add(faHomeLgAlt);
   return null;
 }
 

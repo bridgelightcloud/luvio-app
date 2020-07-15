@@ -1,12 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import SvgLuvio from '../components/svg/SvgLuvio';
-import SignInForm from '../components/SignInForm';
+import SignIn from '../components/SignIn';
+import MagicLink from '../components/MagicLink';
 import {
-  ScreenBase, Text, Row, Center,
+  ScreenBase, Row, Center,
 } from '../styled/components';
 
-function LandingScreen() {
+function LandingScreen({ landing }) {
+  let form = null;
+  switch (landing) {
+    case 'SignIn':
+      form = <SignIn />;
+      break;
+    case 'MagicLink':
+      form = <MagicLink />;
+      break;
+    case 'Welcome':
+      form = null;
+      break;
+    default:
+  }
+
   return (
     <ScreenBase>
       <Row>
@@ -16,7 +31,7 @@ function LandingScreen() {
       </Row>
       <Row>
         <Center>
-          <SignInForm />
+          {form}
         </Center>
       </Row>
       <Row />
@@ -27,6 +42,7 @@ function LandingScreen() {
 function mapStateToProps(store) {
   return {
     session: store.sessionState,
+    landing: store.landingState,
   };
 }
 

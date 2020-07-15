@@ -1,15 +1,22 @@
 import styled from 'styled-components/native';
 import { Platform } from 'react-native';
 
-console.log(Platform.OS);
+const colors = {
+  brandPrimary: '#78BA82',
+  brandPrimaryLight: '#BCDCC1',
+  brandInfo: '#90C1E4',
+  brandWarn: '#D4C348',
+  brandError: '#B02E0C',
+  brandDark: '#0D1821',
+  brandLight: '#FBF5EE',
+};
 
-const brandPrimary = '#78BA82';
-const BrandPrimaryLight = '#BCDCC1';
-const brandInfo = '#90C1E4';
-const brandWarn = '#D4C348';
-const brandError = '#B02E0C';
-const brandDark = '#0D1821';
-const brandLight = '#FBF5EE';
+function getColor(props) {
+  if (props.primary) {
+    return colors.brandPrimary;
+  }
+}
+
 const rootFontSize = '20';
 
 function rem(factor = 1) {
@@ -18,27 +25,27 @@ function rem(factor = 1) {
 
 export const ScreenBase = styled.KeyboardAvoidingView`
   flex: 1;
-  background-color: ${brandDark};
+  background-color: ${colors.brandDark};
 `;
 
 export const Text = styled.Text`
-  color: ${brandLight};
+  color: ${(props) => (props.dark ? colors.brandDark : colors.brandLight)};
   text-align: ${(props) => ((props.center) ? 'center;' : 'left')};
   font-size: ${rem()};
 `;
 
 export const Button = Platform.OS === 'ios'
   ? styled.TouchableOpacity`
-    color: ${brandDark};
-    backgroundColor: ${brandPrimary};
+    color: ${colors.brandDark};
+    backgroundColor: ${colors.brandPrimary};
     height: ${rem(2)};
     border-radius: 20px;
     width: 300px;
     margin: 10px;
   `
   : styled.TouchableOpacity`
-    color: ${brandDark};
-    backgroundColor: ${brandPrimary};
+    color: ${colors.brandDark};
+    backgroundColor: ${colors.brandPrimary};
     height: ${rem(2)};
     border-radius: 20px;
     width: 300px;
@@ -46,12 +53,12 @@ export const Button = Platform.OS === 'ios'
   `;
 
 export const TextInput = styled.TextInput`
-  color: ${brandDark};
-  border-color: ${brandLight};
+  color: ${colors.brandDark};
+  border-color: ${colors.brandLight};
   border-width: 1px;
   border-style: solid;
   border-radius: 20px;
-  background-color: ${BrandPrimaryLight};
+  background-color: ${colors.brandPrimaryLight};
   height: ${rem(2)}; 
   width: 300px;
   margin: 10px;
@@ -76,24 +83,25 @@ export const Center = styled.View`
 
 export const Footer = styled.View`
   height: ${rem(3)};
-  backgroundColor: ${brandPrimary};
+  backgroundColor: ${colors.brandPrimary};
 `;
 
 export const Tab = Platform.OS === 'ios'
   ? styled.TouchableOpacity`
-    color: ${brandDark};
-    backgroundColor: ${brandPrimary};
+    color: ${colors.brandDark};
+    backgroundColor: ${colors.brandPrimary};
     flex: 1;
     flex-direction: column;
-    color: ${brandDark};
-    backgroundColor: ${brandPrimary};
+    color: ${colors.brandDark};
+    backgroundColor: ${colors.brandPrimary};
   `
   : styled.TouchableOpacity`
-    color: ${brandDark};
-    backgroundColor: ${brandPrimary};
+    color: ${colors.brandDark};
+    backgroundColor: ${colors.brandPrimary};
     flex: 1;
     flex-direction: column;
-    color: ${brandDark};
-    backgroundColor: ${brandPrimary};
+    color: ${colors.brandDark};
+    backgroundColor: ${colors.brandPrimary};
   `;
+
 export default null;

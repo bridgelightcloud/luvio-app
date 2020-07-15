@@ -1,6 +1,8 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faHomeLgAlt } from '@fortawesome/pro-solid-svg-icons';
 import {
-  Tab, Button, Text, Center,
+  Tab, Text, Center,
 } from '../styled/components';
 
 export default function AppFooterTab({
@@ -29,7 +31,8 @@ export default function AppFooterTab({
       onLongPress={onLongPress}
     >
       <Center>
-        <Text>
+        <FontAwesomeIcon icon={faHomeLgAlt} color="#0D1821" size={25} />
+        <Text dark>
           {title}
         </Text>
       </Center>

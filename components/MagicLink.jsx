@@ -1,42 +1,45 @@
 /* eslint-disable no-fallthrough */
 import React from 'react';
 import { connect } from 'react-redux';
-import { Text } from 'react-native';
 import models from '../models';
 import util from '../utilities';
+import Slider from './Slider';
+import { Center, Text } from '../styled/components';
 
-function MagicLink({ navigation, route }) {
-  const { params } = route;
-
+function MagicLink() {
   async function createSession() {
     const response = await models.Session.createSession(params.token);
-    delete route.params.token;
 
     switch (response.code) {
       case 'SESSION_CREATED':
         util.Actions.setSession(response.data);
-        navigation.replace('welcome');
+        util.Actions.setLanding('Welcome');
       case 'INVALID_TOKEN':
       case 'EXPIRED_TOKEN':
-        // navigation.navigate('landing');
+        util.Actions.setLanding('Landing');
         break;
       default:
         break;
     }
   }
 
-  if (params && params.token) {
-    createSession();
-  }
+  // if (params && params.token) {
+  //   createSession();
+  // }
 
   return (
-    <Text>Please click the link sent to your email address.</Text>
+    <Slider>
+      <Center>
+        <Text>Please click the link sent to your email address. If you do not receive an email in a few minutes, please verify that you entered the correct email address.</Text>
+      </Center>
+    </Slider>
   );
 }
 
 function mapStateToProps(store) {
   return {
     session: store.sessionState,
+    landing: store.landingState,
   };
 }
 
