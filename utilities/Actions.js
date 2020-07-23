@@ -22,19 +22,7 @@ function setSetting(setting) {
   store.dispatch(setSettingAction(setting));
 }
 
-function setLandingAction(state) {
-  return {
-    type: 'SET_LANDING',
-    state,
-  };
-}
-
-function setLanding(state) {
-  store.dispatch(setLandingAction(state));
-}
-
 export default {
   setSession,
   setSetting,
-  setLanding,
 };

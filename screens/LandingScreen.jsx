@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { createStackNavigator } from '@react-navigation/stack/';
 import SvgLuvio from '../components/svg/SvgLuvio';
 import SignIn from '../components/SignIn';
 import MagicLink from '../components/MagicLink';
@@ -7,21 +8,9 @@ import {
   ScreenBase, Row, Center,
 } from '../styled/components';
 
-function LandingScreen({ landing }) {
-  let form = null;
-  switch (landing) {
-    case 'SignIn':
-      form = <SignIn />;
-      break;
-    case 'MagicLink':
-      form = <MagicLink />;
-      break;
-    case 'Welcome':
-      form = null;
-      break;
-    default:
-  }
+const CenterStack = createStackNavigator();
 
+function LandingScreen() {
   return (
     <ScreenBase>
       <Row>
@@ -30,9 +19,19 @@ function LandingScreen({ landing }) {
         </Center>
       </Row>
       <Row>
-        <Center>
-          {form}
-        </Center>
+        <CenterStack.Navigator
+          initialRouteName="sign-in"
+          headerMode="none"
+        >
+          <CenterStack.Screen
+            name="sign-in"
+            component={SignIn}
+          />
+          <CenterStack.Screen
+            name="magic-link"
+            component={MagicLink}
+          />
+        </CenterStack.Navigator>
       </Row>
       <Row />
     </ScreenBase>

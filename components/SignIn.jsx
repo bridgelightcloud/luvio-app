@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigation } from '@react-navigation/native';
 import models from '../models';
 import {
-  TextInput, Button, Text, Center,
+  TextInput, Button, Text, Center, ScreenBase,
 } from '../styled/components';
-import Slider from './Slider';
-import util from '../utilities';
 
-function SignIn() {
+export default function SignIn(props) {
   const [email, setEmail] = useState('');
-  const navigation = useNavigation();
 
   useEffect(() => {
     setEmail(email.trim());
@@ -18,12 +14,12 @@ function SignIn() {
   async function sendMagicLink() {
     if (email) {
       await models.Token.sendMagicLink(email);
-      util.Actions.setLanding('MagicLink');
+      props.navigation.navigate('magic-link', { email });
     }
   }
 
   return (
-    <Slider>
+    <ScreenBase>
       <Center>
         <TextInput
           rounded
@@ -41,8 +37,6 @@ function SignIn() {
           </Center>
         </Button>
       </Center>
-    </Slider>
+    </ScreenBase>
   );
 }
-
-export default SignIn;

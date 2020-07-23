@@ -18,19 +18,9 @@ function settingsReducer(state = {}, action) {
   }
 }
 
-function landingReducer(state = 'SignIn', action) {
-  switch (action.type) {
-    case 'SET_LANDING':
-      return action.state;
-    default:
-      return state;
-  }
-}
-
 const reducers = combineReducers({
   sessionState: sessionReducer,
   settingsState: settingsReducer,
-  landingState: landingReducer,
 });
 
 export default createStore(reducers);

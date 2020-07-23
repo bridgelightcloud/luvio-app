@@ -28,6 +28,10 @@ export const ScreenBase = styled.KeyboardAvoidingView`
   background-color: ${colors.brandDark};
 `;
 
+export const FlexView = styled.View`
+  flex: 1;
+`;
+
 export const Text = styled.Text`
   color: ${(props) => (props.dark ? colors.brandDark : colors.brandLight)};
   text-align: ${(props) => ((props.center) ? 'center;' : 'left')};
@@ -52,7 +56,9 @@ export const Button = Platform.OS === 'ios'
     margin: 10px;
   `;
 
-export const TextInput = styled.TextInput`
+export const TextInput = styled.TextInput.attrs({
+  placeholderTextColor: colors.brandDark,
+})`
   color: ${colors.brandDark};
   border-color: ${colors.brandLight};
   border-width: 1px;

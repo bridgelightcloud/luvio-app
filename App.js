@@ -4,12 +4,12 @@ import { AppLoading, Linking } from 'expo';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StatusBar, View } from 'react-native';
-import LandingScreen from './screens/LandingScreen';
 import AppFooter from './components/AppFooter';
 import util from './utilities';
+import LandingScreen from './screens/LandingScreen';
 
 const prefix = Linking.makeUrl('/');
-// console.log('prefix:', prefix);
+console.log('prefix:', prefix);
 const AppTab = createBottomTabNavigator();
 
 export default function App() {

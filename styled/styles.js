@@ -1,11 +1,11 @@
 import { StyleSheet } from 'react-native';
 
-const brandPrimary = '#78BA82';
-const brandInfo = '#90C1E4';
-const brandWarn = '#D4C348';
-const brandError = '#B02E0C';
-const brandDark = '#0D1821';
-const brandLight = '#FBF5EE';
+export const brandPrimary = '#78BA82';
+export const brandInfo = '#90C1E4';
+export const brandWarn = '#D4C348';
+export const brandError = '#B02E0C';
+export const brandDark = '#0D1821';
+export const brandLight = '#FBF5EE';
 
 const styles = StyleSheet.create({
   container: {
