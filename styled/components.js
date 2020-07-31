@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import { Platform } from 'react-native';
 
-const colors = {
+export const colors = {
   brandPrimary: '#78BA82',
   brandPrimaryLight: '#BCDCC1',
   brandInfo: '#90C1E4',
@@ -109,5 +109,12 @@ export const Tab = Platform.OS === 'ios'
     color: ${colors.brandDark};
     backgroundColor: ${colors.brandPrimary};
   `;
+
+export const ActivityIndicator = styled.ActivityIndicator.attrs({
+  color: colors.brandPrimary,
+  size: 'large',
+})`
+  padding: ${rem(1)}
+`;
 
 export default null;

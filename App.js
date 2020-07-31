@@ -1,6 +1,7 @@
+/* eslint-disable react/jsx-filename-extension */
 import React, { useState } from 'react';
 import { Provider } from 'react-redux';
-import { AppLoading, Linking } from 'expo';
+import { AppLoading } from 'expo';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StatusBar, View } from 'react-native';
@@ -8,21 +9,11 @@ import AppFooter from './components/AppFooter';
 import util from './utilities';
 import LandingScreen from './screens/LandingScreen';
 
-const prefix = Linking.makeUrl('/');
-console.log('prefix:', prefix);
 const AppTab = createBottomTabNavigator();
 
 export default function App() {
   const [appReady, setAppReady] = useState(false);
-
-  const linking = {
-    prefixes: [prefix, 'https://app.getluv.io'],
-    config: {
-      screens: {
-        SettingsStack: 'settings',
-      },
-    },
-  };
+  const [linking, setLinking] = useState({});
 
   function setReady() {
     setAppReady(true);
@@ -31,7 +22,7 @@ export default function App() {
   if (!appReady) {
     return (
       <AppLoading
-        startAsync={util.Loader.loadDataAndAssets}
+        startAsync={() => util.Loader.loadDataAndAssets(setLinking)}
         onFinish={setReady}
         onError={console.log}
       />

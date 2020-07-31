@@ -1,4 +1,5 @@
 import { AsyncStorage } from 'react-native';
+import * as Linking from 'expo-linking';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faHomeLgAlt } from '@fortawesome/pro-duotone-svg-icons';
 import Actions from './Actions';
@@ -17,9 +18,23 @@ async function loadFonts() {
   return null;
 }
 
+async function initLinking(setLinking) {
+  const prefix = Linking.makeUrl('/');
+  const linking = {
+    prefixes: [prefix, 'https://app.getluv.io', 'https://getluv.io', 'luvio://'],
+    config: {
+      screens: {
+        SettingsStack: 'settings',
+      },
+    },
+  };
+  setLinking(linking);
+}
+
 const Loader = {
-  async loadDataAndAssets() {
+  async loadDataAndAssets(setLinking) {
     await Promise.all([
+      initLinking(setLinking),
       getSession(),
       loadFonts(),
     ]);

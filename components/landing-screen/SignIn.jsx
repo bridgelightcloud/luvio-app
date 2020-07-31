@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import models from '../models';
+import models from '../../models';
 import {
   TextInput, Button, Text, Center, ScreenBase,
-} from '../styled/components';
+} from '../../styled/components';
 
 export default function SignIn(props) {
+  const { navigation, route } = props;
+  const { params } = route;
   const [email, setEmail] = useState('');
 
   useEffect(() => {
@@ -14,7 +16,7 @@ export default function SignIn(props) {
   async function sendMagicLink() {
     if (email) {
       await models.Token.sendMagicLink(email);
-      props.navigation.navigate('magic-link', { email });
+      navigation.navigate('magic-link', { email });
     }
   }
 
