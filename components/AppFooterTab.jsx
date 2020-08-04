@@ -6,8 +6,11 @@ import {
 } from '../styled/components';
 
 export default function AppFooterTab({
-  route, navigation, title, icon, focused,
+  route, navigation, show, title, icon, focused,
 }) {
+  if (!show) {
+    return null;
+  }
   function onPress() {
     const event = navigation.emit({
       type: 'tabPress',

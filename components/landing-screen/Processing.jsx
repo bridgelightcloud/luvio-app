@@ -1,5 +1,5 @@
 /* eslint-disable no-fallthrough */
-import React from 'react';
+import React, { useEffect } from 'react';
 import models from '../../models';
 import util from '../../utilities';
 import {
@@ -10,7 +10,7 @@ export default function Processing(props) {
   const { navigation, route } = props;
   const { params } = route;
 
-  console.log(route);
+  console.log('processing:', route);
 
   async function createSession() {
     const response = await models.Session.createSession(params.token);
@@ -18,19 +18,20 @@ export default function Processing(props) {
     switch (response.code) {
       case 'SESSION_CREATED':
         util.Actions.setSession(response.data);
-        navigation.navigate('welcome');
+        navigation.reset();
       case 'INVALID_TOKEN':
       case 'EXPIRED_TOKEN':
-        util.Actions.setLanding('sign-in', { badToken: true });
+        navigation.navigate('sign-in', { badToken: true });
         break;
       default:
         break;
     }
   }
-
-  if (params && params.token) {
-    createSession();
-  }
+  useEffect(() => {
+    if (params && params.token) {
+      createSession();
+    }
+  }, [params]);
 
   return (
     <ScreenBase>

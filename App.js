@@ -1,33 +1,31 @@
 /* eslint-disable react/jsx-filename-extension */
-import React, { useState } from 'react';
-import { Provider } from 'react-redux';
-import { AppLoading } from 'expo';
-import { NavigationContainer } from '@react-navigation/native';
+/**
+ * @format
+ * @flow strict-local
+ */
+
+import React, { useState, useEffect } from 'react';
+import { StatusBar } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { StatusBar, View } from 'react-native';
+import { Provider } from 'react-redux';
+import { NavigationContainer } from '@react-navigation/native';
 import AppFooter from './components/AppFooter';
 import util from './utilities';
 import LandingScreen from './screens/LandingScreen';
 
 const AppTab = createBottomTabNavigator();
 
-export default function App() {
+function App() {
   const [appReady, setAppReady] = useState(false);
-  const [linking, setLinking] = useState({});
+  const [linking, setLinking] = useState(null);
 
-  function setReady() {
-    setAppReady(true);
-  }
-
-  if (!appReady) {
-    return (
-      <AppLoading
-        startAsync={() => util.Loader.loadDataAndAssets(setLinking)}
-        onFinish={setReady}
-        onError={console.log}
-      />
+  // Load all the necessary data and assets
+  useEffect(() => {
+    util.Loader.loadDataAndAssets(
+      setAppReady,
+      setLinking,
     );
-  }
+  }, []);
 
   return (
     <Provider store={util.Store}>
@@ -40,14 +38,7 @@ export default function App() {
             options={{
               title: 'Home',
               icon: 'home',
-            }}
-          />
-          <AppTab.Screen
-            name="settings"
-            component={View}
-            options={{
-              title: 'Settings',
-              icon: 'cog',
+              show: false,
             }}
           />
         </AppTab.Navigator>
@@ -55,3 +46,5 @@ export default function App() {
     </Provider>
   );
 }
+
+export default App;

@@ -1,0 +1,17 @@
+{
+  "applinks": {
+      "details": [
+           {
+             "appIDs": [ "io.getluv.app"],
+             "components": [
+               {
+                  "/": "/*",
+               },
+             ]
+           }
+       ]
+   },
+   "webcredentials": {
+      "apps": [ "io.getluv.app" ]
+   }
+}

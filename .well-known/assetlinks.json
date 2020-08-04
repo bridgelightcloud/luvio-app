@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "io.getluv.app",
+    "sha256_cert_fingerprints":
+    ["87:92:3D:08:56:0E:31:94:B8:F9:72:B0:2F:AE:90:6C:37:6B:FF:E0:FC:48:28:D4:E8:7E:90:E1:6D:86:D2:0A"]
+  }
+}]

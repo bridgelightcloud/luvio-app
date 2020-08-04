@@ -1,32 +1,26 @@
 /* eslint-disable no-fallthrough */
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
 import { Center, Text, ScreenBase } from '../../styled/components';
-import { brandInfo } from '../../styled/styles';
+import { brandPrimary } from '../../styled/styles';
 
-function MagicLink(props) {
+export default function MagicLink(props) {
   const { navigation, route } = props;
   const { params } = route;
 
-  if (params && params.token) {
-    navigation.replace('processing', { ...params });
-  }
+  useEffect(() => {
+    if (params && params.token) {
+      navigation.setParams(null);
+      navigation.replace('processing', { ...params });
+    }
+  }, [params]);
 
   return (
     <ScreenBase>
       <Center>
         <Text>We&#39;ve sent an email to</Text>
-        <Text style={{ color: brandInfo }}>{route.params.email}</Text>
+        <Text style={{ color: brandPrimary }}>{route.params.email}</Text>
         <Text>Follow the link to sign in.</Text>
       </Center>
     </ScreenBase>
   );
 }
-
-function mapStateToProps(store) {
-  return {
-    session: store.sessionState,
-  };
-}
-
-export default connect(mapStateToProps)(MagicLink);

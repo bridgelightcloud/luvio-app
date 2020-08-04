@@ -12,9 +12,14 @@ export const colors = {
 };
 
 function getColor(props) {
-  if (props.primary) {
-    return colors.brandPrimary;
+  const propKeys = Object.keys(props);
+  for (let i = 0; i < propKeys.length; i++) {
+    const color = colors[`brand${propKeys[i]}`];
+    if (color) {
+      return `color: ${color};`;
+    }
   }
+  return `color: ${colors.brandLight};`;
 }
 
 const rootFontSize = '20';
@@ -33,7 +38,7 @@ export const FlexView = styled.View`
 `;
 
 export const Text = styled.Text`
-  color: ${(props) => (props.dark ? colors.brandDark : colors.brandLight)};
+  ${getColor}
   text-align: ${(props) => ((props.center) ? 'center;' : 'left')};
   font-size: ${rem()};
 `;
@@ -89,7 +94,7 @@ export const Center = styled.View`
 
 export const Footer = styled.View`
   height: ${rem(3)};
-  backgroundColor: ${colors.brandPrimary};
+  backgroundColor: ${(props) => (props.show ? colors.brandPrimary : colors.brandDark)};
 `;
 
 export const Tab = Platform.OS === 'ios'

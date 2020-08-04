@@ -4,9 +4,9 @@ import {
   TextInput, Button, Text, Center, ScreenBase,
 } from '../../styled/components';
 
-export default function SignIn(props) {
-  const { navigation, route } = props;
-  const { params } = route;
+export default function SignIn({ navigation, route }) {
+  console.log('sign-in:', route);
+
   const [email, setEmail] = useState('');
 
   useEffect(() => {
@@ -16,13 +16,21 @@ export default function SignIn(props) {
   async function sendMagicLink() {
     if (email) {
       await models.Token.sendMagicLink(email);
-      navigation.navigate('magic-link', { email });
+      navigation.navigate('magic-link', { email, token: null });
     }
   }
 
   return (
     <ScreenBase>
       <Center>
+        {route.params && route.params.badToken
+          ? (
+            <>
+              <Text Warn>Sign-in token was invalid or expired.</Text>
+              <Text Warn>Please try again.</Text>
+            </>
+          )
+          : null}
         <TextInput
           rounded
           textContentType="emailAddress"
@@ -35,7 +43,7 @@ export default function SignIn(props) {
         />
         <Button onPress={sendMagicLink}>
           <Center>
-            <Text dark>make it rain</Text>
+            <Text Dark>make it rain</Text>
           </Center>
         </Button>
       </Center>
