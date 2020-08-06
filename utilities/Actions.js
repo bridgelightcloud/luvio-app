@@ -22,7 +22,33 @@ function setSetting(setting) {
   store.dispatch(setSettingAction(setting));
 }
 
-export default {
+// Location set and remove
+function updateLocationAction(location) {
+  return {
+    type: 'UPDATE_LOCATION',
+    location,
+  };
+}
+
+function updateLocation(location) {
+  store.dispatch(updateLocationAction(location));
+}
+
+function clearLocationAction() {
+  return {
+    type: 'CLEAR_LOCATION',
+  };
+}
+
+function clearLocation() {
+  store.dispatch(clearLocationAction());
+}
+
+const Actions = {
   setSession,
   setSetting,
+  updateLocation,
+  clearLocation,
 };
+
+export default Actions;
