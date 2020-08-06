@@ -22,6 +22,17 @@ const Session = {
       return { success: false };
     }
   },
+
+  async deleteSession() {
+    try {
+      const response = await axios.delete(apiPath);
+      const check = util.Api.checkStatus(response, 'DELETE_SESSION');
+      return check;
+    } catch (err) {
+      const check = util.Api.checkStatus(err.response, 'DELETE_SESSION');
+      return check;
+    }
+  },
 };
 
 export default Session;

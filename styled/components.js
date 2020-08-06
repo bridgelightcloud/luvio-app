@@ -77,7 +77,7 @@ export const TextInput = styled.TextInput.attrs({
 `;
 
 export const Row = styled.View`
-  flex: 1;
+  flex: ${(props) => props.flex};
   flex-direction: row;
 `;
 

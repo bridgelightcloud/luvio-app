@@ -1,8 +1,8 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+// import { createStackNavigator } from '@react-navigation/stack';
 import { ScreenBase, Center, Text } from '../styled/components';
 
-const Stack = createStackNavigator();
+// const Stack = createStackNavigator();
 
 export default function EventStack() {
   return (

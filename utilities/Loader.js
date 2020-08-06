@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faHomeLgAlt } from '@fortawesome/pro-duotone-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
 import Actions from './Actions';
 
 async function initLinking(setLinking) {
@@ -20,13 +20,11 @@ async function getSession() {
 }
 
 async function loadFonts() {
-  library.add(faHomeLgAlt);
-  return null;
+  library.add(far);
 }
 
 const Loader = {
   async loadDataAndAssets(setAppReady, setLinking, setLinkUrl) {
-    console.log('Loading Data and Assets');
     await Promise.all([
       initLinking(setLinking, setLinkUrl),
       getSession(),

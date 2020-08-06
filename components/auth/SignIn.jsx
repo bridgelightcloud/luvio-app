@@ -5,8 +5,6 @@ import {
 } from '../../styled/components';
 
 export default function SignIn({ navigation, route }) {
-  console.log('sign-in:', route);
-
   const [email, setEmail] = useState('');
 
   useEffect(() => {

@@ -1,5 +1,6 @@
 import store from './Store';
 
+// Session set and remove
 function setSessionAction(session) {
   return {
     type: 'SET_SESSION',
@@ -11,6 +12,17 @@ function setSession(session) {
   store.dispatch(setSessionAction(session));
 }
 
+function removeSessionAction() {
+  return {
+    type: 'REMOVE_SESSION',
+  };
+}
+
+function removeSession() {
+  store.dispatch(removeSessionAction());
+}
+
+// Setting set
 function setSettingAction(setting) {
   return {
     type: setting.name,
@@ -46,6 +58,7 @@ function clearLocation() {
 
 const Actions = {
   setSession,
+  removeSession,
   setSetting,
   updateLocation,
   clearLocation,

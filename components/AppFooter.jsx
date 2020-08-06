@@ -1,5 +1,4 @@
 import React from 'react';
-import { View } from 'react-native';
 import AppFooterTab from './AppFooterTab';
 import { Footer, Row } from '../styled/components';
 
@@ -8,7 +7,6 @@ export default function AppFooter({ state, descriptors, navigation }) {
   if (state && descriptors && navigation) {
     const tabs = state.routes.map((route, index) => {
       const { options } = descriptors[route.key];
-      console.log(options);
       options.key = route.key;
       options.route = route;
       options.focused = state.index === index;

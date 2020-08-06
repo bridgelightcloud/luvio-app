@@ -2,16 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStackNavigator } from '@react-navigation/stack/';
 import SvgLuvio from '../components/svg/SvgLuvio';
-import {
-  ScreenBase, Row, Center, Text,
-} from '../styled/components';
-import SignIn from '../components/landing-screen/SignIn';
-import MagicLink from '../components/landing-screen/MagicLink';
-import Processing from '../components/landing-screen/Processing';
+import { ScreenBase, Row, Center } from '../styled/components';
+import SignIn from '../components/auth/SignIn';
+import MagicLink from '../components/auth/MagicLink';
+import Processing from '../components/auth/Processing';
 
 const CenterStack = createStackNavigator();
 
-function LandingScreen({ route }) {
+function AuthScreen() {
   return (
     <ScreenBase>
       <Row>
@@ -49,4 +47,4 @@ function mapStateToProps(store) {
   };
 }
 
-export default connect(mapStateToProps)(LandingScreen);
+export default connect(mapStateToProps)(AuthScreen);

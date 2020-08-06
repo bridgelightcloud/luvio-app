@@ -11,7 +11,9 @@ import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import AppFooter from './components/AppFooter';
 import util from './utilities';
-import LandingScreen from './screens/LandingScreen';
+import AuthScreen from './screens/AuthScreen';
+import AccountStack from './stacks/AccountStack';
+import FeedScreen from './screens/FeedScreen';
 
 const AppTab = createBottomTabNavigator();
 
@@ -33,12 +35,21 @@ function App() {
         <StatusBar backgroundColor="#0d1821" barStyle="light-content" />
         <AppTab.Navigator tabBar={(props) => <AppFooter {...props} />}>
           <AppTab.Screen
-            name="home"
-            component={LandingScreen}
+            name="feed"
+            component={FeedScreen}
             options={{
-              title: 'Home',
-              icon: 'home',
-              show: false,
+              title: 'Feed',
+              icon: 'newspaper',
+              show: true,
+            }}
+          />
+          <AppTab.Screen
+            name="account"
+            component={AccountStack}
+            options={{
+              title: 'Account',
+              icon: 'user',
+              show: true,
             }}
           />
         </AppTab.Navigator>
