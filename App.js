@@ -11,7 +11,6 @@ import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import AppFooter from './components/AppFooter';
 import util from './utilities';
-import AuthScreen from './screens/AuthScreen';
 import AccountStack from './stacks/AccountStack';
 import FeedScreen from './screens/FeedScreen';
 

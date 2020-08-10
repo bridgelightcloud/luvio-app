@@ -56,12 +56,37 @@ function clearLocation() {
   store.dispatch(clearLocationAction());
 }
 
+// Search results set and remove
+function setSearchResultsAction(results) {
+  return {
+    type: 'SET_RESULTS',
+    results,
+  };
+}
+
+function setSearchResults(results) {
+  store.dispatch(setSearchResultsAction(results));
+}
+
+function clearSearchResultsAction(results) {
+  return {
+    type: 'CLEAR_RESULTS',
+    results,
+  };
+}
+
+function clearSearchResults(results) {
+  store.dispatch(clearSearchResultsAction(results));
+}
+
 const Actions = {
   setSession,
   removeSession,
   setSetting,
   updateLocation,
   clearLocation,
+  setSearchResults,
+  clearSearchResults,
 };
 
 export default Actions;

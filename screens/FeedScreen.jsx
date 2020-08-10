@@ -1,20 +1,16 @@
 import React from 'react';
-import {
-  ScreenBase, Row, Center, Text,
-} from '../styled/components';
+import { SafeAreaView, ScrollView } from '../styled/components';
+import SearchForm from '../components/feed/SearchForm';
+import SearchResults from '../components/feed/SearchResults';
 
 function FeedScreen() {
   return (
-    <ScreenBase>
-      <Row flex={0}>
-        <Center>
-          <Text>Item 1</Text>
-        </Center>
-      </Row>
-      <Row flex={0}>
-        <Text Error>Item 2</Text>
-      </Row>
-    </ScreenBase>
+    <SafeAreaView>
+      <ScrollView>
+        <SearchForm />
+        <SearchResults />
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 

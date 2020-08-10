@@ -18,9 +18,21 @@ function settingsReducer(state = {}, action) {
   }
 }
 
+function searchResultsReducer(state = [], action) {
+  switch (action.type) {
+    case 'SET_RESULTS':
+      return action.results;
+    case 'CLEAR_RESULTS':
+      return [];
+    default:
+      return state;
+  }
+}
+
 const reducers = combineReducers({
   sessionState: sessionReducer,
   settingsState: settingsReducer,
+  searchResults: searchResultsReducer,
 });
 
 export default createStore(reducers);

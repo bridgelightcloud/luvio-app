@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import models from '../../models';
 import {
-  TextInput, Button, Text, Center, ScreenBase,
+  Button, Text, Center, ScreenBase,
 } from '../../styled/components';
+import TextInput from '../../styled/components/TextInput';
 
 export default function SignIn({ navigation, route }) {
   const [email, setEmail] = useState('');

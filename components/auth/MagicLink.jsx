@@ -1,7 +1,5 @@
-/* eslint-disable no-fallthrough */
 import React, { useEffect } from 'react';
 import { Center, Text, ScreenBase } from '../../styled/components';
-import { brandPrimary } from '../../styled/styles';
 
 export default function MagicLink(props) {
   const { navigation, route } = props;
@@ -18,7 +16,7 @@ export default function MagicLink(props) {
     <ScreenBase>
       <Center>
         <Text>We&#39;ve sent an email to</Text>
-        <Text style={{ color: brandPrimary }}>{route.params.email}</Text>
+        <Text Primary>{route.params.email}</Text>
         <Text>Follow the link to sign in.</Text>
       </Center>
     </ScreenBase>

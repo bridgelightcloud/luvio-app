@@ -27,6 +27,21 @@ const Account = {
       return err;
     }
   },
+
+  async search(data) {
+    try {
+      const url = util.Api.addQuery(apiUrl, data);
+      console.log(url);
+      const response = await axios.get(url);
+      return util.Api.checkStatus(response, 'SEARCH_ACCOUNTS');
+    } catch (err) {
+      if (err.response) {
+        console.log('error');
+        return util.Api.checkStatus(err.response, 'SEARCH_ACCOUNTS');
+      }
+      return err;
+    }
+  },
 };
 
 export default Account;

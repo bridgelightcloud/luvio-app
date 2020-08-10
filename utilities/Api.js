@@ -1,7 +1,8 @@
 const statusCodes = {
   200: {
     success: true,
-    LOOKUP_ACCOUNT: 'ACCOUNT_FOUND',
+    SEARCH_ACOUNTS: 'ACCOUNTS_RETURNED',
+    SEARCH_EVENTS: 'EVENTS_RETURNED',
     SEND_MAGIC_LINK: 'MAGIC_LINK_SENT',
   },
   201: {
@@ -28,7 +29,6 @@ const statusCodes = {
   },
   404: {
     success: false,
-    CREATE_ACCOUNT: 'NOT_FOUND',
     CREATE_SESSION: 'INVALID_TOKEN',
     LOOKUP_ACCOUNT: 'ACCOUNT_NOT_FOUND',
   },
@@ -37,6 +37,8 @@ const statusCodes = {
   },
   500: {
     success: false,
+    SEARCH_ACOUNTS: 'SERVER_ERROR',
+    SEARCH_EVENTS: 'SERVER_ERROR',
     CREATE_ACCOUNT: 'SERVER_ERROR',
   },
 };
@@ -46,10 +48,16 @@ const Api = {
 
   url(endpoint) {
     return [
+      // 'http://10.0.0.107:8080',
       process.env.API_HOST || 'https://api.getluv.io',
       process.env.API_PATH || `/${this.version}/`,
       endpoint,
     ].join('');
+  },
+
+  addQuery(apiUrl, data) {
+    const query = Object.entries(data).map((pair) => pair.map(encodeURIComponent).join('=')).join('&');
+    return `${apiUrl}?${query}`;
   },
 
   checkStatus(response, call) {

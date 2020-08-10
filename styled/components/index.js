@@ -1,32 +1,8 @@
 import styled from 'styled-components/native';
-import { Platform } from 'react-native';
-
-export const colors = {
-  brandPrimary: '#78BA82',
-  brandPrimaryLight: '#BCDCC1',
-  brandInfo: '#90C1E4',
-  brandWarn: '#D4C348',
-  brandError: '#B02E0C',
-  brandDark: '#0D1821',
-  brandLight: '#FBF5EE',
-};
-
-function getColor(props) {
-  const propKeys = Object.keys(props);
-  for (let i = 0; i < propKeys.length; i++) {
-    const color = colors[`brand${propKeys[i]}`];
-    if (color) {
-      return `color: ${color};`;
-    }
-  }
-  return `color: ${colors.brandLight};`;
-}
-
-const rootFontSize = '20';
-
-function rem(factor = 1) {
-  return `${factor * rootFontSize}px`;
-}
+import { Platform, StatusBar } from 'react-native';
+import {
+  colors, getColor, getPadding, rem,
+} from './variables';
 
 export const ScreenBase = styled.KeyboardAvoidingView`
   flex: 1;
@@ -39,6 +15,7 @@ export const FlexView = styled.View`
 
 export const Text = styled.Text`
   ${getColor}
+  ${getPadding}
   text-align: ${(props) => ((props.center) ? 'center;' : 'left')};
   font-size: ${rem()};
 `;
@@ -61,22 +38,8 @@ export const Button = Platform.OS === 'ios'
     margin: 10px;
   `;
 
-export const TextInput = styled.TextInput.attrs({
-  placeholderTextColor: colors.brandDark,
-})`
-  color: ${colors.brandDark};
-  border-color: ${colors.brandLight};
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 20px;
-  background-color: ${colors.brandPrimaryLight};
-  height: ${rem(2)}; 
-  width: 300px;
-  margin: 10px;
-  padding: 10px;
-`;
-
 export const Row = styled.View`
+  ${getPadding}
   flex: ${(props) => props.flex};
   flex-direction: row;
 `;
@@ -87,6 +50,7 @@ export const Col = styled.View`
 `;
 
 export const Center = styled.View`
+  ${getPadding}
   flex: 1;
   justify-content: center;
   align-items: center;
@@ -121,5 +85,16 @@ export const ActivityIndicator = styled.ActivityIndicator.attrs({
 })`
   padding: ${rem(1)}
 `;
+
+export const SafeAreaView = styled.SafeAreaView`
+  flex: 1;
+  padding-top: ${parseInt(StatusBar.currentHeight, 10)};
+  backgroundColor: ${colors.brandDark}
+`;
+
+export const FlatList = styled.FlatList`
+`;
+
+export const ScrollView = styled.ScrollView``;
 
 export default null;
