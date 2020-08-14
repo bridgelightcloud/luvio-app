@@ -33,6 +33,7 @@
                 "code": 120
             }
         ],
-        "global-require": "off"
+        "global-require": "off",
+        "no-underscore-dangle": "off"
     }
 }

@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { far } from '@fortawesome/free-regular-svg-icons';
+import { fas } from '@fortawesome/pro-solid-svg-icons';
 import Actions from './Actions';
 
 async function initLinking(setLinking) {
@@ -15,12 +16,12 @@ async function getSession() {
     const session = await AsyncStorage.getItem('@currentSession');
     Actions.setSession(session);
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 }
 
 async function loadFonts() {
-  library.add(far);
+  library.add(far, fas);
 }
 
 const Loader = {

@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import { Platform, StatusBar } from 'react-native';
 import {
-  colors, getColor, getPadding, rem,
+  colors, getColor, getPadding, getAlignment, rem, getFlex, getFocused, getFocusColor,
 } from './variables';
 
 export const ScreenBase = styled.KeyboardAvoidingView`
@@ -17,7 +17,7 @@ export const Text = styled.Text`
   ${getColor}
   ${getPadding}
   text-align: ${(props) => ((props.center) ? 'center;' : 'left')};
-  font-size: ${rem()};
+  font-size: ${(props) => rem(props.fontSize)};
 `;
 
 export const Button = Platform.OS === 'ios'
@@ -39,44 +39,41 @@ export const Button = Platform.OS === 'ios'
   `;
 
 export const Row = styled.View`
+  ${getFlex}  
   ${getPadding}
-  flex: ${(props) => props.flex};
   flex-direction: row;
 `;
 
 export const Col = styled.View`
-  flex: 1;
+  ${getFlex}
   flex-direction: column;
 `;
 
 export const Center = styled.View`
   ${getPadding}
   flex: 1;
-  justify-content: center;
-  align-items: center;
+  ${getAlignment}
 `;
 
 export const Footer = styled.View`
   height: ${rem(3)};
-  backgroundColor: ${(props) => (props.show ? colors.brandPrimary : colors.brandDark)};
+  backgroundColor: ${colors.brandPrimaryLight};
 `;
 
 export const Tab = Platform.OS === 'ios'
   ? styled.TouchableOpacity`
     color: ${colors.brandDark};
-    backgroundColor: ${colors.brandPrimary};
+    backgroundColor: ${getFocusColor};
     flex: 1;
     flex-direction: column;
     color: ${colors.brandDark};
-    backgroundColor: ${colors.brandPrimary};
   `
   : styled.TouchableOpacity`
     color: ${colors.brandDark};
-    backgroundColor: ${colors.brandPrimary};
+    backgroundColor: ${getFocusColor};
     flex: 1;
     flex-direction: column;
     color: ${colors.brandDark};
-    backgroundColor: ${colors.brandPrimary};
   `;
 
 export const ActivityIndicator = styled.ActivityIndicator.attrs({
@@ -88,13 +85,30 @@ export const ActivityIndicator = styled.ActivityIndicator.attrs({
 
 export const SafeAreaView = styled.SafeAreaView`
   flex: 1;
-  padding-top: ${parseInt(StatusBar.currentHeight, 10)};
+  padding-top: ${parseInt(StatusBar.currentHeight, 10)}px;
   backgroundColor: ${colors.brandDark}
 `;
 
-export const FlatList = styled.FlatList`
+export const ScrollView = styled.ScrollView``;
+
+export const AccountThumnail = styled.View`
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  background-color: ${colors.brandInfo}
 `;
 
-export const ScrollView = styled.ScrollView``;
+export const EventThumnail = styled.View`
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  background-color: ${colors.brandInfo}
+`;
+
+export const Header = styled.View`
+  height: ${rem(2)};
+  flex-direction: row;
+  background-color: ${colors.brandPrimary}
+`;
 
 export default null;

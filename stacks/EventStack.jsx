@@ -1,19 +1,18 @@
 import React from 'react';
-// import { createStackNavigator } from '@react-navigation/stack';
-import { ScreenBase, Center, Text } from '../styled/components';
+import { createStackNavigator } from '@react-navigation/stack';
+import EventViewScreen from '../screens/AccountViewScreen';
 
-// const Stack = createStackNavigator();
+const EventNav = createStackNavigator();
 
-export default function EventStack() {
+export default function EventStack({ route }) {
   return (
-    <ScreenBase>
-      <Center>
-        <Text>Events</Text>
-      </Center>
-    </ScreenBase>
-  // {/* <AppHeader route={route}/> */}
-  // <Stack.Navigator headerMode="none">
-  //   <Stack.Screen name="Overview" component={ScreenBase} />
-  // </Stack.Navigator>
+    <EventNav.Navigator
+      headerMode="none"
+    >
+      <EventNav.Screen
+        name="view"
+        component={EventViewScreen}
+      />
+    </EventNav.Navigator>
   );
 }

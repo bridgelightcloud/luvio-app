@@ -1,20 +1,18 @@
 import React from 'react';
-import { Text, Container } from 'native-base';
 import { createStackNavigator } from '@react-navigation/stack';
-import AppHeader from '../components/AppHeader';
-import OverviewScreen from '../screens/OverviewScreen';
-import NotificationsScreen from '../screens/NotificationsScreen';
+import SettingsViewScreen from '../screens/SettingsViewScreen';
 
-const Stack = createStackNavigator();
+const SettingsNav = createStackNavigator();
 
-export default function SettingsStack(props) {
+export default function SettingsStack({ route }) {
   return (
-    <Container>
-      <AppHeader {...props} />
-      <Stack.Navigator headerMode="none">
-        <Stack.Screen name="overview" component={OverviewScreen} />
-        <Stack.Screen name="Notifications" component={NotificationsScreen} />
-      </Stack.Navigator>
-    </Container>
+    <SettingsNav.Navigator
+      headerMode="none"
+    >
+      <SettingsNav.Screen
+        name="view"
+        component={SettingsViewScreen}
+      />
+    </SettingsNav.Navigator>
   );
 }

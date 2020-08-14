@@ -3,8 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import {
   Tab, Text, Center,
 } from '../styled/components';
+import { colors } from '../styled/components/variables';
 
-const set = 'far';
+const set = 'fas';
 
 export default function AppFooterTab({
   route, navigation, show, title, icon, focused,
@@ -24,18 +25,13 @@ export default function AppFooterTab({
     }
   }
 
-  function onLongPress() {
-
-  }
-
   return (
     <Tab
-      active={focused}
+      focused={focused}
       onPress={onPress}
-      onLongPress={onLongPress}
     >
       <Center>
-        <FontAwesomeIcon icon={[set, icon]} color="#0D1821" size={22} />
+        <FontAwesomeIcon icon={[set, icon]} color={colors.brandDark} size={22} />
         <Text Dark>
           {title}
         </Text>

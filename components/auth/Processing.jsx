@@ -13,12 +13,13 @@ export default function Processing(props) {
 
   async function createSession() {
     const response = await models.Session.createSession(params.token);
+    const session = response.data;
 
     switch (response.code) {
       case 'SESSION_CREATED':
-        AsyncStorage.setItem('@session', response.data);
-        util.Actions.setSession(response.data);
-        navigation.replace('account');
+        AsyncStorage.setItem('@session', session);
+        util.Actions.setSession(session);
+        navigation.replace('view', { account: { id: session.id } });
       case 'INVALID_TOKEN':
       case 'EXPIRED_TOKEN':
         navigation.replace('sign-in', { badToken: true });
@@ -27,6 +28,7 @@ export default function Processing(props) {
         break;
     }
   }
+
   useEffect(() => {
     if (params && params.token) {
       createSession();

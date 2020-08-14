@@ -18,7 +18,6 @@ function SearchForm() {
       }
       const accounts = await models.Account.search({ query });
       if (accounts.success) {
-        console.log(accounts.data);
         results.push(...accounts.data);
       }
       results.sort((a, b) => b.confidenceScore - a.confidenceScore);

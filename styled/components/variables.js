@@ -12,7 +12,7 @@ export const rootFontSize = '20';
 
 export function getColor(props) {
   const propKeys = Object.keys(props);
-  for (let i = 0; i < propKeys.length; i++) {
+  for (let i = 0; i < propKeys.length; i += 1) {
     const color = colors[`brand${propKeys[i]}`];
     if (color) {
       return `color: ${color};`;
@@ -22,53 +22,43 @@ export function getColor(props) {
 }
 
 export function getPadding(props) {
-  const padding = {
-    t: 0, // top
-    r: 0, // right
-    b: 0, // bottom
-    l: 0, // left
-  };
-  if (props.pt) {
-    padding.t = props.pt;
-  }
-  if (props.pr) {
-    padding.r = props.pt;
-  }
-  if (props.pb) {
-    padding.b = props.pt;
-  }
-  if (props.pl) {
-    padding.l = props.pt;
-  }
-  if (props.px) {
-    padding.r = props.px;
-    padding.l = props.px;
-  }
-  if (props.py) {
-    padding.t = props.py;
-    padding.b = props.py;
-  }
-  if (props.p) {
-    padding.t = props.p;
-    padding.r = props.p;
-    padding.b = props.p;
-    padding.l = props.p;
+  const {
+    p, px, py, pt, pr, pb, pl,
+  } = props;
+
+  return `
+    padding-top: ${p || py || pt || 0}px;
+    padding-right: ${p || px || pr || 0}px;
+    padding-bottom: ${p || py || pb || 0}px;
+    padding-left: ${p || px || pl || 0}px;
+  `;
+}
+
+export function getAlignment(props) {
+  if (props.horizontal) {
+    return 'justify-content: center;';
+  } if (props.vertical) {
+    return 'align-items: center;';
   }
   return `
-    padding-top: ${padding.t};
-    padding-right: ${padding.r};
-    padding-bottom: ${padding.b};
-    padding-left: ${padding.l};
-  `;
+    justify-content: center;
+    align-items: center;`;
 }
 
 export function getFlex(props) {
   const { flex } = props;
-  return flex ? `flex: ${flex};` : '';
+  return `flex: ${flex || 1};`;
 }
 
 export function rem(factor = 1) {
   return `${factor * rootFontSize}px`;
+}
+
+export function getFocusColor(props) {
+  if (props.focused) {
+    return colors.brandPrimaryLight;
+  }
+  return colors.brandPrimary;
 }
 
 export default null;

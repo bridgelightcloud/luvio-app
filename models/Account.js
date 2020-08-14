@@ -16,9 +16,9 @@ const Account = {
     }
   },
 
-  async lookup(email) {
+  async lookup(accountId) {
     try {
-      const response = await axios.get(`${apiUrl}/lookup/${email}`);
+      const response = await axios.get(`${apiUrl}/${accountId}`);
       return util.Api.checkStatus(response, 'LOOKUP_ACCOUNT');
     } catch (err) {
       if (err.response) {
@@ -31,12 +31,11 @@ const Account = {
   async search(data) {
     try {
       const url = util.Api.addQuery(apiUrl, data);
-      console.log(url);
       const response = await axios.get(url);
       return util.Api.checkStatus(response, 'SEARCH_ACCOUNTS');
     } catch (err) {
       if (err.response) {
-        console.log('error');
+        console.error('error');
         return util.Api.checkStatus(err.response, 'SEARCH_ACCOUNTS');
       }
       return err;

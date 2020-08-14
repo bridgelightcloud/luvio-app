@@ -3,7 +3,7 @@ import util from '../utilities';
 
 const apiUrl = util.Api.url('events');
 
-const Account = {
+const Event = {
   async create(data) {
     try {
       const response = await axios.post(apiUrl, data);
@@ -11,6 +11,18 @@ const Account = {
     } catch (err) {
       if (err.response) {
         return util.Api.checkStatus(err.response, 'CREATE_EVENT');
+      }
+      return err;
+    }
+  },
+
+  async lookup(eventId) {
+    try {
+      const response = await axios.get(`${apiUrl}/${eventId}`);
+      return util.Api.checkStatus(response, 'LOOKUP_EVENT');
+    } catch (err) {
+      if (err.response) {
+        return util.Api.checkStatus(err.response, 'LOOKUP_EVENT');
       }
       return err;
     }
@@ -25,10 +37,10 @@ const Account = {
       if (err.response) {
         return util.Api.checkStatus(err.response, 'SEARCH_EVENTS');
       }
-      console.log(err);
+      console.error(err);
       return err;
     }
   },
 };
 
-export default Account;
+export default Event;

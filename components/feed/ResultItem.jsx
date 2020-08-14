@@ -1,19 +1,30 @@
 import React from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { Row, Col, Text } from '../../styled/components';
+import { useLinkProps } from '@react-navigation/native';
+import {
+  Row, Col, Text, Center,
+} from '../../styled/components';
+import Thumnail from '../Thumnail';
 
 export default function ResultItem({ result }) {
-  const navigation = useNavigation();
+  const viewUrl = `/${result.model.toLowerCase()}s/view?id=${result._id}`;
+  const { onPress, ...props } = useLinkProps({
+    to: viewUrl,
+  });
 
   return (
-    <Row
-      onTouch={() => navigation.navigate('view', { id: result.id })}
-    >
-      <Col />
+    <Row px={10} py={5} onTouchEnd={onPress} {...props}>
+      <Col>
+        <Thumnail
+          model={result.model}
+          picUrl={result.picUrl}
+        />
+      </Col>
       <Col flex={4}>
-        <Text Light>
-          {result.name}
-        </Text>
+        <Center>
+          <Text Light>
+            {result.name}
+          </Text>
+        </Center>
       </Col>
     </Row>
   );

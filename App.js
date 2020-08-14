@@ -13,6 +13,9 @@ import AppFooter from './components/AppFooter';
 import util from './utilities';
 import AccountStack from './stacks/AccountStack';
 import FeedScreen from './screens/FeedScreen';
+import EventStack from './stacks/EventStack';
+import SettingsStack from './stacks/SettingsStack';
+import { colors } from './styled/components/variables';
 
 const AppTab = createBottomTabNavigator();
 
@@ -31,7 +34,7 @@ function App() {
   return (
     <Provider store={util.Store}>
       <NavigationContainer linking={linking}>
-        <StatusBar backgroundColor="#0d1821" barStyle="light-content" />
+        <StatusBar backgroundColor={colors.brandPrimary} barStyle="dark-content" />
         <AppTab.Navigator tabBar={(props) => <AppFooter {...props} />}>
           <AppTab.Screen
             name="feed"
@@ -39,16 +42,34 @@ function App() {
             options={{
               title: 'Feed',
               icon: 'newspaper',
-              show: true,
+              show: appReady && true,
             }}
           />
           <AppTab.Screen
-            name="account"
+            name="events"
+            component={EventStack}
+            options={{
+              title: 'Events',
+              icon: 'calendar-alt',
+              show: appReady && true,
+            }}
+          />
+          <AppTab.Screen
+            name="accounts"
             component={AccountStack}
             options={{
               title: 'Account',
               icon: 'user',
-              show: true,
+              show: appReady && true,
+            }}
+          />
+          <AppTab.Screen
+            name="settings"
+            component={SettingsStack}
+            options={{
+              title: 'Settings',
+              icon: 'cog',
+              show: appReady && true,
             }}
           />
         </AppTab.Navigator>

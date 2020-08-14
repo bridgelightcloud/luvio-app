@@ -36,7 +36,9 @@ export default function SignIn({ navigation, route }) {
           autoCapitalize="none"
           autoCompleteType="email"
           keyboardType="email-address"
+          returnKeyType="send"
           onChangeText={setEmail}
+          onSubmitEditing={sendMagicLink}
           value={email}
           placeholder="email address"
         />

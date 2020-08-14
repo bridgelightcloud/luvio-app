@@ -6,12 +6,14 @@ import { ScreenBase, Row, Center } from '../styled/components';
 import SignIn from '../components/auth/SignIn';
 import MagicLink from '../components/auth/MagicLink';
 import Processing from '../components/auth/Processing';
+import ScreenHeader from '../components/ScreenHeader';
 
 const CenterStack = createStackNavigator();
 
 function AuthScreen() {
   return (
     <ScreenBase>
+      <ScreenHeader title="Sign In" />
       <Row>
         <Center>
           <SvgLuvio />
