@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import models from '../../models';
+import util from '../../utilities';
 import {
   Button, Text, Center, ScreenBase,
 } from '../../styled/components';
@@ -14,7 +14,7 @@ export default function SignIn({ navigation, route }) {
 
   async function sendMagicLink() {
     if (email) {
-      await models.Token.sendMagicLink(email);
+      await util.Models.Token.sendMagicLink(email);
       navigation.navigate('magic-link', { email, token: null });
     }
   }

@@ -23,7 +23,7 @@ const Camera = {
       const photos = await CameraRoll.getPhotos({
         first: 20,
       });
-      console.log(photos.edges[0].node.image.uri);
+      console.debug(photos.edges[0].node.image.uri);
       return photos;
     }
 

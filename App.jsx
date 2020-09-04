@@ -21,19 +21,19 @@ const AppTab = createBottomTabNavigator();
 
 function App() {
   const [appReady, setAppReady] = useState(false);
-  const [linking, setLinking] = useState(null);
+  const [deepLink, setDeepLink] = useState(null);
 
   // Load all the necessary data and assets
   useEffect(() => {
     util.Loader.loadDataAndAssets(
       setAppReady,
-      setLinking,
+      setDeepLink,
     );
   }, []);
 
   return (
     <Provider store={util.Store}>
-      <NavigationContainer linking={linking}>
+      <NavigationContainer linking={deepLink}>
         <StatusBar backgroundColor={colors.brandPrimary} barStyle="dark-content" />
         <AppTab.Navigator tabBar={(props) => <AppFooter {...props} />}>
           <AppTab.Screen

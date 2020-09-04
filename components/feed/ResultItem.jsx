@@ -20,7 +20,7 @@ export default function ResultItem({ result }) {
         />
       </Col>
       <Col flex={4}>
-        <Center>
+        <Center horizontal>
           <Text Light>
             {result.name}
           </Text>

@@ -1,4 +1,8 @@
 const statusCodes = {
+  0: {
+    success: false,
+    NETWORK_ERROR: 'NETWORK_ERROR',
+  },
   200: {
     success: true,
     SEARCH_ACOUNTS: 'ACCOUNTS_RETURNED',
@@ -19,6 +23,7 @@ const statusCodes = {
   400: {
     success: false,
     CREATE_ACCOUNT: 'BAD_REQUEST',
+    VERIFY_SESSION: 'BAD_REQUEST',
   },
   401: {
     success: false,
@@ -48,7 +53,7 @@ const Api = {
 
   url(endpoint) {
     return [
-      // 'http://10.0.0.107:8080',
+      // 'http://10.0.0.11:8080',
       process.env.API_HOST || 'https://api.getluv.io',
       process.env.API_PATH || `/${this.version}/`,
       endpoint,
@@ -61,12 +66,24 @@ const Api = {
   },
 
   checkStatus(response, call) {
-    const { status, data } = response;
+    // There will be no response if the server is unreacable.
+    // This likely means that there is no internet connection.
+    const {
+      status,
+      data,
+    } = response || {
+      status: 0,
+      data: null,
+    };
+
     const check = {
       success: statusCodes[status].success,
-      code: statusCodes[status][call],
+      code: statusCodes[status][response ? call : 'NETWORK_ERROR'],
       data,
     };
+
+    // TODO: If there is a network error, alert the user?
+
     return check;
   },
 };

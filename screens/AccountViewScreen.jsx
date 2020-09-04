@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {
   ScreenBase, Col, Row, Text, Center,
 } from '../styled/components';
-import models from '../models';
+import util from '../utilities';
 import Thumnail from '../components/Thumnail';
 import ScreenHeader from '../components/ScreenHeader';
 
@@ -14,9 +14,11 @@ function AccountViewScreenComponent({ navigation, route, session }) {
   const { params } = route;
 
   async function getAccount() {
-    const account = await models.Account.lookup(accountId);
-    if (account.success) {
-      setAccountDetails(account.data);
+    if (accountId) {
+      const account = await util.Models.Account.lookup(accountId);
+      if (account.success) {
+        setAccountDetails(account.data);
+      }
     }
   }
 
@@ -24,11 +26,11 @@ function AccountViewScreenComponent({ navigation, route, session }) {
     if (params && params.id) {
       setAccountId(params.id);
     } else if (session) {
-      setAccountId(session);
+      setAccountDetails(session.account);
     } else {
       navigation.replace('auth');
     }
-  }, [params && params.id]);
+  }, [params && params.id, session]);
 
   useEffect(() => {
     getAccount();
@@ -51,7 +53,7 @@ function AccountViewScreenComponent({ navigation, route, session }) {
           </Center>
         </Col>
         <Col flex={3}>
-          <Center>
+          <Center horizontal>
             <Text>{accountDetails.name}</Text>
           </Center>
         </Col>

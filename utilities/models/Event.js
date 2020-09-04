@@ -1,16 +1,16 @@
 import axios from 'axios';
-import util from '../utilities';
+import Api from '../Api';
 
-const apiUrl = util.Api.url('events');
+const apiUrl = Api.url('events');
 
 const Event = {
   async create(data) {
     try {
       const response = await axios.post(apiUrl, data);
-      return util.Api.checkStatus(response, 'CREATE_EVENT');
+      return Api.checkStatus(response, 'CREATE_EVENT');
     } catch (err) {
       if (err.response) {
-        return util.Api.checkStatus(err.response, 'CREATE_EVENT');
+        return Api.checkStatus(err.response, 'CREATE_EVENT');
       }
       return err;
     }
@@ -19,10 +19,10 @@ const Event = {
   async lookup(eventId) {
     try {
       const response = await axios.get(`${apiUrl}/${eventId}`);
-      return util.Api.checkStatus(response, 'LOOKUP_EVENT');
+      return Api.checkStatus(response, 'LOOKUP_EVENT');
     } catch (err) {
       if (err.response) {
-        return util.Api.checkStatus(err.response, 'LOOKUP_EVENT');
+        return Api.checkStatus(err.response, 'LOOKUP_EVENT');
       }
       return err;
     }
@@ -30,12 +30,12 @@ const Event = {
 
   async search(data) {
     try {
-      const url = util.Api.addQuery(apiUrl, data);
+      const url = Api.addQuery(apiUrl, data);
       const response = await axios.get(url);
-      return util.Api.checkStatus(response, 'SEARCH_EVENTS');
+      return Api.checkStatus(response, 'SEARCH_EVENTS');
     } catch (err) {
       if (err.response) {
-        return util.Api.checkStatus(err.response, 'SEARCH_EVENTS');
+        return Api.checkStatus(err.response, 'SEARCH_EVENTS');
       }
       console.error(err);
       return err;

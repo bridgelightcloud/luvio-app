@@ -4,6 +4,8 @@ function sessionReducer(state = null, action) {
   switch (action.type) {
     case 'SET_SESSION':
       return action.session;
+    case 'REMOVE_SESSION':
+      return null;
     default:
       return state;
   }

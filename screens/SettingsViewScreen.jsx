@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import {
-  ScreenBase, Col, Row, Text, Center,
+  ScreenBase, Text,
 } from '../styled/components';
-import models from '../models';
-import Thumnail from '../components/Thumnail';
 
 function SettingsViewScreenComponent({ navigation, route, session }) {
   const [settingsId, setSettingsId] = useState(null);

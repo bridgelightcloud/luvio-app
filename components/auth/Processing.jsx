@@ -1,7 +1,6 @@
 /* eslint-disable no-fallthrough */
 import React, { useEffect } from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
-import models from '../../models';
 import util from '../../utilities';
 import {
   Center, Text, ScreenBase, ActivityIndicator,
@@ -12,13 +11,13 @@ export default function Processing(props) {
   const { params } = route;
 
   async function createSession() {
-    const response = await models.Session.createSession(params.token);
+    const response = await util.Models.Session.createSession(params.token);
     const session = response.data;
 
     switch (response.code) {
       case 'SESSION_CREATED':
-        AsyncStorage.setItem('@session', session);
-        util.Actions.setSession(session);
+        AsyncStorage.setItem('@session', JSON.stringify(session));
+        await util.Actions.setSession(session);
         navigation.replace('view', { account: { id: session.id } });
       case 'INVALID_TOKEN':
       case 'EXPIRED_TOKEN':

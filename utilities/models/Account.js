@@ -1,16 +1,16 @@
 import axios from 'axios';
-import util from '../utilities';
+import Api from '../Api';
 
-const apiUrl = util.Api.url('accounts');
+const apiUrl = Api.url('accounts');
 
 const Account = {
   async create(data) {
     try {
       const response = await axios.post(apiUrl, data);
-      return util.Api.checkStatus(response, 'CREATE_ACCOUNT');
+      return Api.checkStatus(response, 'CREATE_ACCOUNT');
     } catch (err) {
       if (err.response) {
-        return util.Api.checkStatus(err.response, 'CREATE_ACCOUNT');
+        return Api.checkStatus(err.response, 'CREATE_ACCOUNT');
       }
       return err;
     }
@@ -19,10 +19,10 @@ const Account = {
   async lookup(accountId) {
     try {
       const response = await axios.get(`${apiUrl}/${accountId}`);
-      return util.Api.checkStatus(response, 'LOOKUP_ACCOUNT');
+      return Api.checkStatus(response, 'LOOKUP_ACCOUNT');
     } catch (err) {
       if (err.response) {
-        return util.Api.checkStatus(err.response, 'LOOKUP_ACCOUNT');
+        return Api.checkStatus(err.response, 'LOOKUP_ACCOUNT');
       }
       return err;
     }
@@ -30,13 +30,13 @@ const Account = {
 
   async search(data) {
     try {
-      const url = util.Api.addQuery(apiUrl, data);
+      const url = Api.addQuery(apiUrl, data);
       const response = await axios.get(url);
-      return util.Api.checkStatus(response, 'SEARCH_ACCOUNTS');
+      return Api.checkStatus(response, 'SEARCH_ACCOUNTS');
     } catch (err) {
       if (err.response) {
         console.error('error');
-        return util.Api.checkStatus(err.response, 'SEARCH_ACCOUNTS');
+        return Api.checkStatus(err.response, 'SEARCH_ACCOUNTS');
       }
       return err;
     }

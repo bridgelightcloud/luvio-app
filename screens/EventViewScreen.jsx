@@ -4,7 +4,7 @@ import {
   ScreenBase, Row, Col, Center, Text,
 } from '../styled/components';
 import Thumnail from '../components/Thumnail';
-import models from '../models';
+import util from '../utilities';
 
 function EventViewScreenComponent({ navigation, route, session }) {
   const [eventId, setEventId] = useState(null);
@@ -13,7 +13,7 @@ function EventViewScreenComponent({ navigation, route, session }) {
   const { params } = route;
 
   async function getEvent() {
-    const event = await models.Event.lookup(eventId);
+    const event = await util.Models.Event.lookup(eventId);
     if (event.success) {
       setEventDetails(event.data);
     }
