@@ -17,8 +17,9 @@ export default function Processing(props) {
     switch (response.code) {
       case 'SESSION_CREATED':
         AsyncStorage.setItem('@session', JSON.stringify(session));
-        await util.Actions.setSession(session);
+        util.Actions.setSession(session);
         navigation.replace('view', { account: { id: session.id } });
+        break;
       case 'INVALID_TOKEN':
       case 'EXPIRED_TOKEN':
         navigation.replace('sign-in', { badToken: true });

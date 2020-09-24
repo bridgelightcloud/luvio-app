@@ -54,8 +54,8 @@ const Api = {
   url(endpoint) {
     return [
       // 'http://10.0.0.11:8080',
-      process.env.API_HOST || 'https://api.getluv.io',
-      process.env.API_PATH || `/${this.version}/`,
+      'https://api.getluv.io',
+      `/${this.version}/`,
       endpoint,
     ].join('');
   },

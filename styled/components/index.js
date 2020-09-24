@@ -1,7 +1,14 @@
 import styled from 'styled-components/native';
 import { Platform, StatusBar } from 'react-native';
 import {
-  colors, getColor, getPadding, getAlignment, rem, getFlex, getFocused, getFocusColor,
+  colors,
+  getColor,
+  getPadding,
+  getAlignment,
+  rem,
+  getFlex,
+  getFocusColor,
+  getGridSize,
 } from './variables';
 
 export const ScreenBase = styled.KeyboardAvoidingView`
@@ -108,7 +115,7 @@ export const EventThumnail = styled.View`
 export const Header = styled.View`
   height: ${rem(2)};
   flex-direction: row;
-  background-color: ${colors.brandPrimary}
+  background-color: ${colors.brandPrimary};
 `;
 
 export default null;

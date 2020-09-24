@@ -6,9 +6,7 @@ const apiUrl = Api.url('sessions');
 const Session = {
   async createSession(token) {
     try {
-      const response = await axios.post(apiUrl, {
-        token,
-      });
+      const response = await axios.post(apiUrl, { token });
       const check = Api.checkStatus(response, 'CREATE_SESSION');
       return check;
     } catch (err) {
@@ -24,9 +22,7 @@ const Session = {
 
   async verifySession(sessionId) {
     try {
-      const response = await axios.post(apiUrl, {
-        sessionId,
-      });
+      const response = await axios.get(`${apiUrl}/${sessionId}`);
       const check = Api.checkStatus(response, 'VERIFY_SESSION');
       return check;
     } catch (err) {
