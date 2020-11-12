@@ -38,9 +38,11 @@ function SettingsViewScreenComponent({ navigation, route, session }) {
     );
   }
 
+  console.log('settings');
+
   return (
     <ScreenBase>
-      <Text Dark>Settings</Text>
+      <Text Light>Settings</Text>
     </ScreenBase>
   );
 }

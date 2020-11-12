@@ -4,6 +4,7 @@ import Camera from './Camera';
 import Loader from './Loader';
 import Models from './models';
 import Store from './Store';
+import Stripe from './Stripe';
 
 const util = {
   Actions,
@@ -12,6 +13,7 @@ const util = {
   Loader,
   Models,
   Store,
+  Stripe,
 };
 
 export default util;
